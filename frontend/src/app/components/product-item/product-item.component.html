@@ -1,0 +1,86 @@
+<td>
+    {{product.id}}
+</td>
+<ng-container *ngIf="!isEditing else editName">
+    <td>
+        {{product.name}}
+    </td>
+</ng-container>
+<ng-template #editName>
+    <td>
+        <input type="text" [(ngModel)]="product.name">
+    </td>
+</ng-template>
+<ng-container *ngIf="!isEditing else editDescription">
+    <td>
+        {{product.description}}
+    </td>
+</ng-container>
+<ng-template #editDescription>
+    <td>
+        <input type="text" [(ngModel)]="product.description">
+    </td>
+</ng-template>
+<ng-container *ngIf="!isEditing else editPrice">
+    <td>
+        {{product.price}}
+    </td>
+</ng-container>
+<ng-template #editPrice>
+    <td>
+        <input type="text" [(ngModel)]="product.price">
+    </td>
+</ng-template>
+<ng-container *ngIf="!isEditing else editInStock">
+    <td>
+        {{product.in_stock}}
+    </td>
+</ng-container>
+<ng-template #editInStock>
+    <td>
+        <input type="checkbox" [checked]="product.in_stock" [(ngModel)]="product.in_stock">
+    </td>
+</ng-template>
+<td>
+    {{product.created_at}}
+</td>
+<td>
+    {{product.updated_at}}
+</td>
+<ng-container *ngIf="!isEditing else editCategory">
+    <td>
+        {{product.category}}
+    </td>
+</ng-container>
+<ng-template #editCategory>
+    <td>
+        <select name="category" [(ngModel)]="product.category">
+            <option>HOME</option>
+            <option>ELECTRONICS</option>
+            <option>BOOKS</option>
+            <option>CLOTHING</option>
+            <option>TOYS</option>
+        </select>
+    </td>
+</ng-template>
+<ng-container *ngIf="!isEditing else editTags">
+    <td>
+        {{product.tags}}
+    </td>
+</ng-container>
+<ng-template #editTags>
+    <td>
+        <input type="text" [(ngModel)]="product.tags">
+    </td>
+</ng-template>
+<ng-container *ngIf="!isEditing else submitButton">
+    <td>
+        <button (click)="isEditing = !isEditing">Edit</button>
+    </td>
+</ng-container>
+<ng-template #submitButton>
+    <td>
+        <button (click)="editProduct()">Submit</button>
+    </td>
+</ng-template>
+<button (click)="deleteProduct()">Delete</button>

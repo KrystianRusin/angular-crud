@@ -1,0 +1,45 @@
+<form [formGroup]="addProductForm" (submit)="addProduct()">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" formControlName="name">
+    </div>
+    <ng-container *ngIf="!addProductForm.get('name')?.valid && (addProductForm.get('name')?.touched || addProductForm.get('name')?.dirty)">
+        <small>Name is Required</small>
+    </ng-container>
+
+    <div>
+        <label for="description">Description:</label>
+        <input type="text" name="description" formControlName="description">
+    </div>
+    <ng-container *ngIf="!addProductForm.get('description')?.valid && (addProductForm.get('description')?.touched || addProductForm.get('description')?.dirty)">
+        <small>Description is Required and must be at least 5 characters</small>
+    </ng-container>
+
+    <div>
+        <label for="price">Price:</label>
+        <input type="text" name="price" formControlName="price">
+    </div>
+    <ng-container *ngIf="!addProductForm.get('price')?.valid && (addProductForm.get('price')?.touched || addProductForm.get('price')?.dirty)">
+        <small>Price must exceed $0.01</small>
+    </ng-container>
+
+    <div>
+        <label for="in-stock">In Stock:</label>
+        <input type="checkbox" name="in-stock" formControlName="in_stock">
+    </div>
+    <div>
+        <label for="category">Category:</label>
+        <select name="category" formControlName="category">
+            <option>HOME</option>
+            <option>ELECTRONICS</option>
+            <option>BOOKS</option>
+            <option>CLOTHING</option>
+            <option>TOYS</option>
+        </select>
+    </div>
+    <div>
+        <label for="Tags">Tags:</label>
+        <input type="text" name="tags" formControlName="tags">
+    </div>
+    <button type="submit" [disabled]="addProductForm.invalid">Submit</button>
+</form>

@@ -1,0 +1,35 @@
+<div class="filter-bar-container">
+    <h4>Filters: </h4>
+    <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" [(ngModel)]="filter.name" (ngModelChange)="filterChange()">
+    </div>
+    <div>
+        <label for="name">Description</label>
+        <input type="text" name="description" [(ngModel)]="filter.description" (ngModelChange)="filterChange()">
+    </div>
+    <div>
+        <label for="price">Price</label>
+        <input type="number" name="price" [(ngModel)]="filter.price" (ngModelChange)="filterChange()">
+    </div>
+    <div>
+        <label for="in-stock">In Stock: </label>
+        <input type="checkbox" name="in-stock" [(ngModel)]="filter.in_stock" (ngModelChange)="filterChange()">
+    </div>
+    <div>
+        <label for="category">Category</label>
+        <select name="category" [(ngModel)]="filter.category" (ngModelChange)="filterChange()">
+            <option>All</option>
+            <option>HOME</option>
+            <option>ELECTRONICS</option>
+            <option>BOOKS</option>
+            <option>CLOTHING</option>
+            <option>TOYS</option>
+        </select>
+    </div>
+    <div>
+        <label for="tags">Tags: </label>
+        <input type="text" name="tags" [(ngModel)]="rawTags" (ngModelChange)="onTagsChange($event)">
+    </div>
+
+</div>

@@ -1,0 +1,40 @@
+<product-filter (filterUpdated)="filterProducts($event)"></product-filter>
+
+<table class="product-table">
+  <thead>
+    <tr>
+      <th (click)="sortBy('id')">ID</th>
+      <th (click)="sortBy('name')">Name</th>
+      <th (click)="sortBy('description')">Description</th>
+      <th (click)="sortBy('price')">Price</th>
+      <th (click)="sortBy('in_stock')">In Stock</th>
+      <th (click)="sortBy('created_at')">Created</th>
+      <th (click)="sortBy('updated_at')">Updated</th>
+      <th (click)="sortBy('category')">Category</th>
+      <th (click)="sortBy('tags')">Tags</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngIf="filteredList.length; else emptyList">
+      <tr *ngFor="let product of filteredList"
+          product-item
+          [product]="product"
+          (productEdit)="editProduct($event)"
+          (productDelete)="deleteProduct($event)">
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+
+<ng-template #emptyList>
+  <tr><td colspan="10" class="no-data">No products found.</td></tr>
+</ng-template>
+
+<button class="btn-add" (click)="addingProduct = !addingProduct">
+  {{ addingProduct ? 'Cancel' : 'Add New Product' }}
+</button>
+
+<ng-container *ngIf="addingProduct">
+  <add-product-form (productAdded)="addProduct($event)"></add-product-form>
+</ng-container>

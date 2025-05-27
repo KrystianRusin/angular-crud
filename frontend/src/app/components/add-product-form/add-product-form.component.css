@@ -1,0 +1,26 @@
+.product-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: #eef9ff;
+  padding: 1rem;
+  border: 1px solid #bbe1fa;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+  flex: 1;
+}
+.filter-group.tags { flex: 2; }
+.filter-group label {
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+.filter-input, .filter-select {
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
